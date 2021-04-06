@@ -157,7 +157,7 @@ const HeaderInformation = styled.div`
   flex: 1;
 
   > h3 {
-    margin-bottom: 3px;
+    margin-bottom: -10px;
   }
 
   > p {
@@ -176,7 +176,22 @@ const EndOfMessage = styled.div`
   margin-bottom: 50px;
 `;
 
-const HeaderIcons = styled.div``;
+const HeaderIcons = styled.div`
+  /* iPhone 8 */
+  @media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+    display: none;
+  }
+
+  /* iPhone X */
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    display: none;
+  }
+
+  /* iPhone 8 plus */
+  @media only screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) {
+    display: none;
+  }
+`;
 
 const InputContainer = styled.form`
   display: flex;

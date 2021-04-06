@@ -5,8 +5,10 @@ import { auth, db } from '../firebase';
 import getRecipientEmail from '../utils/getRecipientEmail';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { useRouter } from 'next/router';
+import { useWindowSize } from '@react-hook/window-size';
 
-function Chat({ id, users }) {
+function Chat({ id, users, handleDrawerToggle }) {
+  const [width, height] = useWindowSize();
   const router = useRouter();
   const [user] = useAuthState(auth);
   const [recipientSnapshot] = useCollection(
@@ -15,6 +17,7 @@ function Chat({ id, users }) {
 
   const enterChat = () => {
     router.push(`/chat/${id}`);
+    if (width < 414) handleDrawerToggle();
   };
 
   const recipient = recipientSnapshot?.docs?.[0]?.data();
